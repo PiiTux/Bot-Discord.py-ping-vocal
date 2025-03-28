@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from discord import AllowedMentions, Client, Intents
 
 # ID du salon où le bot doit envoyer le message (obligatoire)
-CHANNEL = 0000000000000000000
+CHANNEL = 1339949935008813066
 # Liste des ID des salons vocaux à ignorer (facultatif)
 IGNORED_CHANNELS = (0000000000000000000, 0000000000000000000)
 # ID du rôle à pinger (facultatif)
@@ -33,19 +33,26 @@ async def on_ready():
         print("❌ Erreur : Le bot n'est présent sur aucun serveur.", file=stderr)
         return
 
-    # Récupéreration du premier serveur trouvé
-    guild = client.guilds[0]
+    # Variable pour suivre si un salon est trouvé
+    found = False
 
-    # Récupéreration du salon
-    channel = guild.get_channel(CHANNEL)
+    # Boucle sur tous les serveurs où est le bot
+    for guild in client.guilds:
+        channel = guild.get_channel(CHANNEL)
+        if channel:
+            # On marque que le salon a été trouvé
+            found = True
+            # On sort de la boucle
+            break
 
-    if channel:
-        print(f"✅ Prêt ! Connecté en tant que {client.user} sur {guild.name}")
-    else:
+    # Si aucun salon n'a été trouvé après la boucle
+    if not found:
         print(
-            f"❌ Erreur : Impossible de trouver le salon avec l'ID {CHANNEL} sur le serveur {guild.name} ({guild.id}).",
+            f"❌ Erreur : Le salon avec l'ID {CHANNEL} n'a été trouvé sur aucun serveur.",
             file=stderr
         )
+    else:
+        print(f"✅ Prêt ! Connecté en tant que {client.user} sur {guild.name}")
 
 
 # Événement déclenché lorsqu'un membre change d'état vocal (rejoindre, quitter, etc.)
@@ -73,11 +80,6 @@ async def on_voice_state_update(member, before, after):
             if channel:
                 # Envoi du message dans le salon
                 await channel.send(f"🎙️ <@{member.id}> s'est connecté dans le salon <#{after.channel.id}>.|| *Ping {mention}*||", allowed_mentions=AllowedMentions(users=False))
-            else:
-                print(
-                    f"❌ Erreur : Impossible de trouver le salon avec l'ID {CHANNEL} sur le serveur {after.channel.guild.name} ({after.channel.guild.id}).",
-                    file=stderr
-                )
 
 # Démarrage du client Discord avec le jeton d'accès
 client.run(TOKEN)
