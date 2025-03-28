@@ -38,9 +38,9 @@ Le bot écoute les événements sur les salons vocaux. Quand quelqu’un débarq
 
 ### ⚙️ Configuration
 
-1. Crée un fichier `.env` à la racine du projet.
-2. Ajoute-y ton token Discord :
-    ```
+1. **📂 Crée un fichier `.env`** : À la racine du projet, ajoute un fichier `.env` pour stocker les infos sensibles.
+2. **🔑 Ajoute-y ton token Discord** :
+    ```env
     DISCORD_TOKEN = VOTRE_TOKEN_DISCORD_ICI
     ```
 3. Modifie les variables de configuration en haut de `main.py` pour spécifier l'ID du salon où envoyer les messages :
@@ -62,12 +62,11 @@ Le bot écoute les événements sur les salons vocaux. Quand quelqu’un débarq
     ```bash
     python3 main.py
     ```
-
-2. Pour l’exécuter en arrière-plan (Linux) :
+2. Pour l’exécuter en arrière-plan :
     ```bash
     nohup python3 main.py &
     ```
-    Ou avec `tmux` (si tu es du genre à aimer organiser ta vie comme un boss) :
+3. Ou avec `tmux` (si tu es du genre à aimer organiser ta vie comme un boss) :
     ```bash
     tmux new -s bot_discord "python3 main.py"
     ```
@@ -97,7 +96,7 @@ Si le bot joue les troubles-fêtes, voici quelques vérifications :
      ```
 
 4. **Regarde les logs**
-   - Si le bot se met à ramer, consulte les erreurs dans le terminal pour identifier le problème.
+   - Si le bot plante, regarde les erreurs affichées dans le terminal pour avoir un indice.
 
 ## 📈 Compatibilité
 
