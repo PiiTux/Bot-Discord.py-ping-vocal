@@ -33,7 +33,7 @@ Le bot écoute les événements sur les salons vocaux. Quand quelqu’un débarq
 
 3. Installe les dépendances :
     ```bash
-    pip install -U discord python-dotenv openai
+    pip install -U discord python-dotenv
     ```
 
 ### Configuration
