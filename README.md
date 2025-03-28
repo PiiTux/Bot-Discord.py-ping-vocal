@@ -5,7 +5,6 @@ Ce bot Discord, développé en Python, est conçu pour envoyer une notification 
 ## Fonctionnalités
 
 - Envoie une notification lorsqu'un utilisateur rejoint un salon vocal.
-- Configuration simple via un fichier `.env`.
 - Variables de configuration facilement modifiables en début de code.
 - Léger et rapide grâce à l'utilisation de la bibliothèque `discord.py`.
 
@@ -70,6 +69,37 @@ Le bot écoute les événements de connexion aux salons vocaux du serveur. Lorsq
     ```bash
     tmux new -s bot_discord "python3 main.py"
     ```
+
+## Dépannage
+
+Si le bot ne fonctionne pas comme prévu, voici quelques vérifications à effectuer :
+
+1. **Vérifier le token Discord**
+   - Assurez-vous que votre fichier `.env` contient bien la ligne suivante avec un token valide :
+     ```
+     DISCORD_TOKEN = VOTRE_TOKEN_DISCORD_ICI
+     ```
+   - Vérifiez que le token est toujours actif et n’a pas été révoqué dans le [portail des développeurs Discord](https://discord.com/developers/applications).
+
+2. **Vérifier que le salon textuel est bien défini**
+   - Dans `main.py`, l’ID du salon (`CHANNEL`) doit être correctement renseigné :
+     ```python
+     CHANNEL = 0000000000000000000
+     ```
+   - Assurez-vous que le bot a bien les permissions pour envoyer des messages dans ce salon.
+
+3. **Activer les intents dans le portail des développeurs Discord**
+   - Allez dans la section "Bot" de votre application sur le portail Discord.
+   - Activez les intents "Server Members Intent" et "Presence Intent" si nécessaire.
+
+4. **Vérifier les dépendances**
+   - Assurez-vous que les modules nécessaires sont bien installés :
+     ```bash
+     pip install -U discord python-dotenv
+     ```
+
+5. **Regarder les logs d’erreur**
+   - Si le bot plante, regardez les erreurs affichées dans le terminal pour identifier le problème.
 
 ## Compatibilité
 
