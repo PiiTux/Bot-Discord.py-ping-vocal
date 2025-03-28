@@ -30,7 +30,7 @@ client = Client(intents=intents)
 async def on_ready():
     # Vérification que le bot est bien présent sur au moins un serveur
     if not client.guilds:
-        print("❌ Erreur : Le bot n'est présent sur aucun serveur.", file=stderr)
+        print("❌ Erreur : Le bot n'est présent sur aucun serveur", file=stderr)
         return
 
     # Variable pour suivre si un salon est trouvé
@@ -48,7 +48,7 @@ async def on_ready():
     # Si aucun salon n'a été trouvé après la boucle
     if not found:
         print(
-            f"❌ Erreur : Le salon avec l'ID {CHANNEL} n'a été trouvé sur aucun serveur.",
+            f"❌ Erreur : Le salon avec l'ID {CHANNEL} n'a été trouvé sur aucun serveur",
             file=stderr
         )
     else:
