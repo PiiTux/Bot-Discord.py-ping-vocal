@@ -1,4 +1,4 @@
-# Bot Discord de notification de connexion aux salons vocaux
+# Bot Discord pour notifications vocales
 
 Ce bot Discord, développé en Python, est conçu pour envoyer une notification (ping) aux utilisateurs sur un serveur Discord lorsqu'une personne rejoint un salon vocal.
 
