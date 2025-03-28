@@ -80,27 +80,27 @@ tmux new -s bot_discord "python3 main.py"
 Si le bot joue les troubles-fêtes, voici quelques vérifications :
 
 1. **Vérifie ton token Discord**
-- Ton fichier `.env` doit contenir la ligne suivante avec un token valide :
+   - Ton fichier `.env` doit contenir la ligne suivante avec un token valide :
 ```
 DISCORD_TOKEN = VOTRE_TOKEN_DISCORD_ICI
 ```
-- Assure-toi qu'il n’a pas été révoqué via le [portail des développeurs Discord](https://discord.com/developers/applications).
+   - Assure-toi qu'il n’a pas été révoqué via le [portail des développeurs Discord](https://discord.com/developers/applications).
 
 2. **Le salon textuel est-il bien défini ?**
-- Dans `main.py`, vérifie l'ID du salon :
+   - Dans `main.py`, vérifie l'ID du salon :
 ```python
 CHANNEL = 0000000000000000000
 ```
-- Le bot doit avoir la permission d'envoyer des messages dans ce salon.
+   - Le bot doit avoir la permission d'envoyer des messages dans ce salon.
 
 3. **Les dépendances sont-elles installées ?**
-- Assure-toi que tous les modules nécessaires sont bien installés :
+   - Assure-toi que tous les modules nécessaires sont bien installés :
 ```bash
 pip install -U discord python-dotenv
 ```
 
 4. **Regarde les logs**
-- Si le bot se met à ramer, consulte les erreurs dans le terminal pour identifier le problème.
+   - Si le bot se met à ramer, consulte les erreurs dans le terminal pour identifier le problème.
 
 ## 📈 Compatibilité
 
