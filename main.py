@@ -21,6 +21,10 @@ TOKEN = getenv("DISCORD_TOKEN")
 if not TOKEN:
     raise RuntimeError("Aucun jeton d'accès Discord trouvé dans le fichier .env ou dans les variables d'environnement")
 
+# IGNORED_CHANNELS doit toujours être un tuple
+IGNORED_CHANNELS = (IGNORED_CHANNELS,) if isinstance(
+    IGNORED_CHANNELS, int) else IGNORED_CHANNELS
+
 # Création des intents pour le client Discord
 intents = Intents.default()
 intents.voice_states = True
@@ -56,7 +60,7 @@ async def on_ready():
         await client.close()
         raise RuntimeError(f"Le salon avec l'ID {CHANNEL} n'a été trouvé sur aucun serveur")
     else:
-        print(f"Prêt ! Connecté en tant que {client.user} sur {guild.name}")
+        print(f"Connecté en tant que {client.user} sur {guild.name}")
 
 
 # Événement déclenché lorsqu'un membre change d'état vocal (rejoindre, quitter, etc.)
