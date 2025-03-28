@@ -6,12 +6,17 @@ Ce bot Discord, développé en Python, est conçu pour envoyer une notification 
 
 - Envoie une notification lorsqu'un utilisateur rejoint un salon vocal.
 - Configuration simple via un fichier `.env`.
+- Variables de configuration facilement modifiables en début de code.
 - Léger et rapide grâce à l'utilisation de la bibliothèque `discord.py`.
+
+## Fonctionnement du bot
+
+Le bot écoute les événements de connexion aux salons vocaux du serveur. Lorsqu'un utilisateur rejoint un salon vocal, le bot déclenche une notification qui peut ping un rôle ou envoyer un message dans un canal textuel prédéfini.
 
 ## Installation
 
 ### Prérequis
-- Python (version 3.8 ou supérieure) : [Télécharger ici](https://www.python.org/).
+- Python (version 3.8 ou supérieure).
 
 ### Étapes d'installation
 
@@ -37,13 +42,38 @@ Ce bot Discord, développé en Python, est conçu pour envoyer une notification 
     ```
     DISCORD_TOKEN = VOTRE_TOKEN_DISCORD_ICI
     ```
+3. Modifiez les variables de configuration en début de code dans `main.py` pour définir l'ID du salon où envoyer les messages :
+    ```python
+    # ID du salon où le bot doit envoyer le message (obligatoire)
+    CHANNEL = 0000000000000000000
+    ```
+4. (Optionnel) Modifiez les autres variables de configuration en début de code dans `main.py` pour adapter le comportement du bot :
+    ```python
+    # Liste des ID des salons vocaux à ignorer (facultatif)
+    IGNORED_CHANNELS = (0000000000000000000, 0000000000000000000)
+    # ID du rôle à pinger (facultatif)
+    ROLE = 0000000000000000000
+    ```
 
 ## Démarrage du bot
 
-1. Lancez le bot en exécutant le fichier main.py :
+1. Lancez le bot en exécutant le fichier `main.py` :
     ```bash
     python3 main.py
     ```
+
+2. Pour exécuter le bot en arrière-plan (Linux) :
+    ```bash
+    nohup python3 main.py &
+    ```
+    Ou avec `tmux` :
+    ```bash
+    tmux new -s bot_discord "python3 main.py"
+    ```
+
+## Compatibilité
+
+Ce bot utilise la bibliothèque `discord.py` et est compatible avec les versions récentes de Python (3.8+). Il est recommandé d'utiliser la dernière version stable de `discord.py` pour garantir une compatibilité optimale.
 
 ## Contribuer
 

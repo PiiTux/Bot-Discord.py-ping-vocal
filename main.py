@@ -3,12 +3,12 @@ from os import getenv
 from dotenv import load_dotenv
 from discord import AllowedMentions, Client, Intents
 
-# ID du rôle à pinger
-ROLE = 0000000000000000000
-# ID du salon où le bot doit envoyer le message
+# ID du salon où le bot doit envoyer le message (obligatoire)
 CHANNEL = 0000000000000000000
-# Liste des ID des salons vocaux à ignorer par le bot
+# Liste des ID des salons vocaux à ignorer (facultatif)
 IGNORED_CHANNELS = (0000000000000000000, 0000000000000000000)
+# ID du rôle à pinger (facultatif)
+ROLE = 0000000000000000000
 
 # Chargement des variables d'environnement à partir du fichier .env
 load_dotenv()
