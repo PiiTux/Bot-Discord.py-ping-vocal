@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from discord import AllowedMentions, Client, Intents
 
 # ID du salon où le bot doit envoyer le message (obligatoire)
-CHANNEL = 1339949935008813066
+CHANNEL = 0000000000000000000
 # Liste des ID des salons vocaux à ignorer (facultatif)
 IGNORED_CHANNELS = (0000000000000000000, 0000000000000000000)
 # ID du rôle à pinger (facultatif)
