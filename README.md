@@ -88,17 +88,13 @@ Si le bot ne fonctionne pas comme prévu, voici quelques vérifications à effec
      ```
    - Assurez-vous que le bot a bien les permissions pour envoyer des messages dans ce salon.
 
-3. **Activer les intents dans le portail des développeurs Discord**
-   - Allez dans la section "Bot" de votre application sur le portail Discord.
-   - Activez les intents "Server Members Intent" et "Presence Intent" si nécessaire.
-
-4. **Vérifier les dépendances**
+3. **Vérifier les dépendances**
    - Assurez-vous que les modules nécessaires sont bien installés :
      ```bash
      pip install -U discord python-dotenv
      ```
 
-5. **Regarder les logs d’erreur**
+4. **Regarder les logs d’erreur**
    - Si le bot plante, regardez les erreurs affichées dans le terminal pour identifier le problème.
 
 ## Compatibilité
