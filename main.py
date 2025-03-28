@@ -1,5 +1,5 @@
 # Importation des modules nécessaires
-from os import getenv
+from os import getenv, path
 from dotenv import load_dotenv
 from discord import AllowedMentions, Client, Intents
 
@@ -10,11 +10,16 @@ IGNORED_CHANNELS = (0000000000000000000, 0000000000000000000)
 # ID du rôle à pinger (facultatif)
 ROLE = 0000000000000000000
 
-# Chargement des variables d'environnement à partir du fichier .env
-load_dotenv()
+# Si le fichier .env existe
+if path.exists(".env"):
+    # Chargement des variables d'environnement à partir du fichier .env
+    load_dotenv()
 
 # Récupération du jeton d'accès Discord à partir des variables d'environnement
 TOKEN = getenv("DISCORD_TOKEN")
+
+if not TOKEN:
+    raise RuntimeError("Aucun jeton d'accès Discord trouvé dans le fichier .env ou dans les variables d'environnement")
 
 # Création des intents pour le client Discord
 intents = Intents.default()
