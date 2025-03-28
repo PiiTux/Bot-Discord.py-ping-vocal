@@ -58,7 +58,7 @@ Le bot écoute les événements sur les salons vocaux. Quand quelqu’un débarq
 
 ## 🚀 Démarrage du bot
 
-Une fois que tu as tout configuré, tu peux lancer ton bot avec cette commande :
+1. Une fois que tu as tout configuré, tu peux lancer ton bot avec cette commande :
     ```bash
     python3 main.py
     ```
