@@ -1,132 +1,134 @@
-# Bot Discord de notification vocale
+# 🎤 Bot Discord de Notification Vocale 🚨
 
-Ce bot Discord, développé en Python, est conçu pour envoyer une notification (ping) aux utilisateurs sur un serveur Discord lorsqu'une personne rejoint un salon vocal.
+Bienvenue dans le monde magique des **pings vocaux** sur Discord ! Ce bot, créé en Python avec `discord.py`, vous alerte dès qu'un utilisateur rejoint un salon vocal sur votre serveur.
 
-## Fonctionnalités
+## 🎯 Fonctionnalités
 
-- Envoie une notification lorsqu'un utilisateur rejoint un salon vocal.
-- Variables de configuration facilement modifiables en début de code.
-- Léger et rapide grâce à l'utilisation de la bibliothèque `discord.py`.
+- 🚪 Envoie une notification chaque fois qu’un utilisateur rejoint un salon vocal.
+- 🔧 Variables de configuration ultra simples à modifier dès le début du code.
+- ⚡ Léger et rapide, grâce à `discord.py` (la magie Python 🐍).
 
-## Fonctionnement du bot
+## 💡 Comment ça marche ?
 
-Le bot écoute les événements de connexion aux salons vocaux du serveur. Lorsqu'un utilisateur rejoint un salon vocal, le bot déclenche une notification qui peut ping un rôle ou envoyer un message dans un canal textuel prédéfini.
+Le bot écoute les événements sur les salons vocaux. Quand quelqu’un débarque dans l’un d’eux, hop ! Une notification part, soit pour pinger un rôle, soit pour envoyer un message dans un canal spécifique. Ça dépend de ta configuration.
 
-## Installation
+## 📦 Installation
 
 ### Prérequis
-- Python (version 3.8 ou supérieure).
+- Python (version 3.8 ou supérieure). Si tu as une version plus vieille… c’est probablement le moment de la mettre à jour 😉
 
 ### Étapes d'installation
 
-1. Clonez le dépôt :
+1. Clone le dépôt :
     ```bash
-    git clone https://github.com/PiiTux/Bot_Discord.py_ping_vocal.git
-    cd Bot_Discord.py_ping_vocal
+    git clone https://github.com/PiiTux/Bot-Discord.py-ping-vocal.git
+    cd Bot-Discord.py-ping-vocal
     ```
-2. Créez un environnement virtuel pour isoler les dépendances :
+
+2. Crée un environnement virtuel pour que tout soit bien isolé :
     ```bash
     python3 -m venv .venv
     source .venv/bin/activate
     ```
-3. Installez les dépendances :
+
+3. Installe les dépendances :
     ```bash
-    pip install -U discord python-dotenv
+    pip install -U discord python-dotenv openai
     ```
 
 ### Configuration
 
-1. Créez un fichier `.env` à la racine du projet.
-2. Ajoutez-y votre token Discord :
+1. Crée un fichier `.env` à la racine du projet.
+2. Ajoute-y ton token Discord :
     ```
     DISCORD_TOKEN = VOTRE_TOKEN_DISCORD_ICI
     ```
-3. Modifiez les variables de configuration en début de code dans `main.py` pour définir l'ID du salon où envoyer les messages :
+3. Modifie les variables de configuration en haut de `main.py` pour spécifier l'ID du salon où envoyer les messages :
     ```python
-    # ID du salon où le bot doit envoyer le message (obligatoire)
+    # ID du salon où le bot enverra les messages (obligatoire)
     CHANNEL = 0000000000000000000
     ```
-4. (Optionnel) Modifiez les autres variables de configuration en début de code dans `main.py` pour adapter le comportement du bot :
+4. (Optionnel) Modifie d’autres paramètres comme les salons vocaux à ignorer, ou le rôle à pinger :
     ```python
-    # Liste des ID des salons vocaux à ignorer (facultatif)
+    # Liste des salons vocaux à ignorer (facultatif)
     IGNORED_CHANNELS = (0000000000000000000, 0000000000000000000)
     # ID du rôle à pinger (facultatif)
     ROLE = 0000000000000000000
     ```
 
-## Démarrage du bot
+## 🚀 Démarrage du bot
 
-1. Lancez le bot en exécutant le fichier `main.py` :
+1. Lance le bot en exécutant `main.py` :
     ```bash
     python3 main.py
     ```
 
-2. Pour exécuter le bot en arrière-plan (Linux) :
+2. Pour l’exécuter en arrière-plan (Linux) :
     ```bash
     nohup python3 main.py &
     ```
-    Ou avec `tmux` :
+    Ou avec `tmux` (si tu es du genre à aimer organiser ta vie comme un boss) :
     ```bash
     tmux new -s bot_discord "python3 main.py"
     ```
 
-## Dépannage
+## 🛠️ Dépannage
 
-Si le bot ne fonctionne pas comme prévu, voici quelques vérifications à effectuer :
+Si le bot joue les troubles-fêtes, voici quelques vérifications :
 
-1. **Vérifier le token Discord**
-   - Assurez-vous que votre fichier `.env` contient bien la ligne suivante avec un token valide :
+1. **Vérifie ton token Discord**
+   - Ton fichier `.env` doit contenir la ligne suivante avec un token valide :
      ```
      DISCORD_TOKEN = VOTRE_TOKEN_DISCORD_ICI
      ```
-   - Vérifiez que le token est toujours actif et n’a pas été révoqué dans le [portail des développeurs Discord](https://discord.com/developers/applications).
+   - Assure-toi qu'il n’a pas été révoqué via le [portail des développeurs Discord](https://discord.com/developers/applications).
 
-2. **Vérifier que le salon textuel est bien défini**
-   - Dans `main.py`, l’ID du salon (`CHANNEL`) doit être correctement renseigné :
+2. **Le salon textuel est-il bien défini ?**
+   - Dans `main.py`, vérifie l'ID du salon :
      ```python
      CHANNEL = 0000000000000000000
      ```
-   - Assurez-vous que le bot a bien les permissions pour envoyer des messages dans ce salon.
+   - Le bot doit avoir la permission d'envoyer des messages dans ce salon.
 
-3. **Vérifier les dépendances**
-   - Assurez-vous que les modules nécessaires sont bien installés :
+3. **Les dépendances sont-elles installées ?**
+   - Assure-toi que tous les modules nécessaires sont bien installés :
      ```bash
      pip install -U discord python-dotenv
      ```
 
-4. **Regarder les logs d’erreur**
-   - Si le bot plante, regardez les erreurs affichées dans le terminal pour identifier le problème.
+4. **Regarde les logs**
+   - Si le bot se met à ramer, consulte les erreurs dans le terminal pour identifier le problème.
 
-## Compatibilité
+## 📈 Compatibilité
 
-Ce bot utilise la bibliothèque `discord.py` et est compatible avec les versions récentes de Python (3.8+). Il est recommandé d'utiliser la dernière version stable de `discord.py` pour garantir une compatibilité optimale.
+Ce bot fonctionne avec `discord.py` et est compatible avec les versions de Python 3.8+.
 
-## Contribuer
+## 🌟 Contribuer
 
-Les contributions sont les bienvenues ! Pour contribuer :
-1. Forkez le dépôt.
-2. Créez une branche pour vos modifications :
+Les contributions sont les bienvenues ! Si tu veux faire une modif’ :
+1. Fork le dépôt.
+2. Crée une branche pour ta feature :
     ```bash
     git checkout -b feature/nom-de-la-fonctionnalite
     ```
-3. Effectuez vos modifications et validez-les :
+3. Fais tes changements, puis commit :
     ```bash
     git commit -m "Ajout d'une nouvelle fonctionnalité"
     ```
-4. Poussez vos modifications :
+4. Pousse ta branche :
     ```bash
     git push origin feature/nom-de-la-fonctionnalite
     ```
-5. Ouvrez une Pull Request.
+5. Ouvre une Pull Request.
 
-## Licence
+## 📜 Licence
 
-Ce projet est sous licence Apache 2.0. Consultez le fichier [LICENSE](LICENSE) pour plus d'informations.
+Ce projet est sous licence Apache 2.0. Consulte le fichier [LICENSE](LICENSE) pour plus d'infos.
 
-## Support
+## 🆘 Support
 
-Si vous rencontrez des problèmes ou avez des questions, n'hésitez pas à ouvrir une [issue](https://github.com/PiiTux/Bot_Discord.py_ping_vocal/issues).
+Si t’as un souci ou une question, ouvre une [issue](https://github.com/PiiTux/Bot_Discord.py_ping_vocal/issues).
 
-## Remerciements
+## 🙏 Remerciements
 
-Merci d'utiliser ce bot ! Si vous l'appréciez, n'hésitez pas à laisser une étoile ⭐ sur le dépôt GitHub.
+Merci d’utiliser ce bot ! Si t’es fan, n’oublie pas de laisser une étoile ⭐ sur le dépôt GitHub.
