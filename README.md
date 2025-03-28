@@ -38,8 +38,8 @@ Le bot écoute les événements sur les salons vocaux. Quand quelqu’un débarq
 
 ### ⚙️ Configuration
 
-1. **📂 Crée un fichier `.env`** : À la racine du projet, ajoute un fichier `.env` pour stocker les infos sensibles.
-2. **🔑 Ajoute-y ton token Discord** :
+1. **Crée un fichier `.env`** : À la racine du projet, ajoute un fichier `.env` pour stocker les infos sensibles.
+2. **Ajoute-y ton token Discord** :
     ```env
     DISCORD_TOKEN = VOTRE_TOKEN_DISCORD_ICI
     ```
