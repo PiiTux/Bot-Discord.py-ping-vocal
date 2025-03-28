@@ -1,6 +1,5 @@
 # Importation des modules nécessaires
 from os import getenv
-from sys import stderr
 from dotenv import load_dotenv
 from discord import AllowedMentions, Client, Intents
 
@@ -30,8 +29,9 @@ client = Client(intents=intents)
 async def on_ready():
     # Vérification que le bot est bien présent sur au moins un serveur
     if not client.guilds:
-        print("❌ Erreur : Le bot n'est présent sur aucun serveur", file=stderr)
-        return
+        # Déconnecte le bot proprement
+        await client.close()
+        raise RuntimeError("Le bot n'est présent sur aucun serveur")
 
     # Variable pour suivre si un salon est trouvé
     found = False
@@ -47,9 +47,11 @@ async def on_ready():
 
     # Si aucun salon n'a été trouvé après la boucle
     if not found:
-        print(f"❌ Erreur : Le salon avec l'ID {CHANNEL} n'a été trouvé sur aucun serveur", file=stderr)
+        # Déconnecte le bot proprement
+        await client.close()
+        raise RuntimeError(f"Le salon avec l'ID {CHANNEL} n'a été trouvé sur aucun serveur")
     else:
-        print(f"✅ Prêt ! Connecté en tant que {client.user} sur {guild.name}")
+        print(f"Prêt ! Connecté en tant que {client.user} sur {guild.name}")
 
 
 # Événement déclenché lorsqu'un membre change d'état vocal (rejoindre, quitter, etc.)
