@@ -47,10 +47,7 @@ async def on_ready():
 
     # Si aucun salon n'a été trouvé après la boucle
     if not found:
-        print(
-            f"❌ Erreur : Le salon avec l'ID {CHANNEL} n'a été trouvé sur aucun serveur",
-            file=stderr
-        )
+        print(f"❌ Erreur : Le salon avec l'ID {CHANNEL} n'a été trouvé sur aucun serveur", file=stderr)
     else:
         print(f"✅ Prêt ! Connecté en tant que {client.user} sur {guild.name}")
 
