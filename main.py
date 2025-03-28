@@ -36,12 +36,6 @@ client = Client(intents=intents)
 # Événement déclenché lorsque le bot est prêt
 @client.event
 async def on_ready():
-    # Vérification que le bot est bien présent sur au moins un serveur
-    if not client.guilds:
-        # Déconnecte le bot proprement
-        await client.close()
-        raise RuntimeError("Le bot n'est présent sur aucun serveur")
-
     # Variable pour suivre si un salon est trouvé
     found = False
 
