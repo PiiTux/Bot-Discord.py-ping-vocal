@@ -1,29 +1,26 @@
-# ID du salon où le bot doit envoyer le message (obligatoire)
-CHANNEL = 0000000000000000000
-# Liste des ID des salons vocaux à ignorer (facultatif)
-IGNORED_CHANNELS = (0000000000000000000, 0000000000000000000)
-# ID du rôle à pinger (facultatif)
-ROLE = 0000000000000000000
-
 # Importation des modules nécessaires
 from os import getenv, path
 from dotenv import load_dotenv
+from configparser import ConfigParser
 from discord import AllowedMentions, Client, Intents
+
+# Chargement du fichier de configuration
+config = ConfigParser()
+config.read("settings.ini")
+CHANNEL = config["SETTINGS"].getint("CHANNEL")
+IGNORED_CHANNELS = tuple(map(int, config["SETTINGS"]["IGNORED_CHANNELS"].split(",")))
+ROLE = config["SETTINGS"].getint("ROLE")
 
 # Si le fichier .env existe
 if path.exists(".env"):
-    # Chargement des variables d'environnement à partir du fichier .env
+    # Chargement des variables d’environnement à partir du fichier .env
     load_dotenv()
 
-# Récupération du jeton d'accès Discord à partir des variables d'environnement
+# Récupération du jeton d’accès Discord à partir des variables d’environnement
 TOKEN = getenv("DISCORD_TOKEN")
 
 if not TOKEN:
-    raise RuntimeError("Aucun jeton d'accès Discord trouvé dans le fichier .env ou dans les variables d'environnement")
-
-# IGNORED_CHANNELS doit toujours être un tuple
-IGNORED_CHANNELS = (IGNORED_CHANNELS,) if isinstance(
-    IGNORED_CHANNELS, int) else IGNORED_CHANNELS
+    raise RuntimeError("Aucun jeton d’accès Discord trouvé dans le fichier .env ou dans les variables d’environnement")
 
 # Création des intents pour le client Discord
 intents = Intents.default()
@@ -48,16 +45,16 @@ async def on_ready():
             # On sort de la boucle
             break
 
-    # Si aucun salon n'a été trouvé après la boucle
+    # Si aucun salon n’a été trouvé après la boucle
     if not found:
         # Déconnecte le bot proprement
         await client.close()
-        raise RuntimeError(f"Le salon avec l'ID {CHANNEL} n'a été trouvé sur aucun serveur")
+        raise RuntimeError(f"Le salon avec l’ID {CHANNEL} n’a été trouvé sur aucun serveur")
     else:
         print(f"Connecté en tant que {client.user} sur {guild.name}")
 
 
-# Événement déclenché lorsqu'un membre change d'état vocal (rejoindre, quitter, etc.)
+# Événement déclenché lorsqu’un membre change d’état vocal (rejoindre, quitter, etc.)
 @client.event
 async def on_voice_state_update(member, before, after):
     # Vérification que le membre a rejoint ou changé de salon vocal
@@ -81,7 +78,7 @@ async def on_voice_state_update(member, before, after):
             # Vérification que le salon existe
             if channel:
                 # Envoi du message dans le salon
-                await channel.send(f"🎙️ <@{member.id}> s'est connecté dans le salon <#{after.channel.id}>.|| *Ping {mention}*||", allowed_mentions=AllowedMentions(users=False))
+                await channel.send(f"🎙️ <@{member.id}> s’est connecté dans le salon <#{after.channel.id}>.|| *Ping {mention}*||", allowed_mentions=AllowedMentions(users=False))
 
-# Démarrage du client Discord avec le jeton d'accès
+# Démarrage du client Discord avec le jeton d’accès
 client.run(TOKEN)
