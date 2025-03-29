@@ -44,10 +44,10 @@ Le bot écoute les événements sur les salons vocaux. Quand quelqu’un débarq
     DISCORD_TOKEN = VOTRE_TOKEN_DISCORD_ICI
     ```
 3. **Paramètres obligatoires dans `settings.ini`** : Le bot se configure avec un fichier `settings.ini` ultra simple (presque trop facile, genre pas d’excuses !). Voilà ce que tu peux modifier pour faire tourner la bête :
-- **`CHANNEL`** : L’ID du salon où le bot va balancer son message pour soûler les gens en les prévenant dès qu’un utilisateur rejoint un salon vocal 📢
+   - **`CHANNEL`** : L’ID du salon où le bot va balancer son message pour soûler les gens en les prévenant dès qu’un utilisateur rejoint un salon vocal 📢
 4. **Paramètres optionnels** : Si tu veux rajouter des petites touches perso, tu peux modifier des trucs comme les salons vocaux à ignorer ou le rôle à pinger (si t’as envie de faire chier tout le monde, tu sais quoi faire) 😈 :
-- **`IGNORED_CHANNELS`** : Liste des salons vocaux à ignorer, séparés par des virgules (exemple : `123456789, 987654321`) 🚫
-- **`ROLE`** : ID du rôle à pinger (parce que parfois, faut secouer un peu les rôles dormants) ⚡
+   - **`IGNORED_CHANNELS`** : Liste des salons vocaux à ignorer, séparés par des virgules (exemple : `123456789, 987654321`) 🚫
+   - **`ROLE`** : ID du rôle à pinger (parce que parfois, faut secouer un peu les rôles dormants) ⚡
 
 ## 🚀 Démarrage du bot
 
