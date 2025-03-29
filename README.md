@@ -62,7 +62,7 @@ Le bot écoute les événements sur les salons vocaux. Quand quelqu’un débarq
     ```bash
     python3 main.py
     ```
-2. Pour l’exécuter en ~~le forçant à traverser une autoroute en trottinette sans freins~~ arrière-plan, tu peux utiliser cette commande :
+2. Pour l’exécuter ~~sur la place publique~~ en arrière-plan, tu peux utiliser cette commande :
     ```bash
     nohup python3 main.py &
     ```
