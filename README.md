@@ -58,11 +58,11 @@ Le bot écoute les événements sur les salons vocaux. Quand quelqu’un débarq
 
 ## 🚀 Démarrage du bot
 
-1. Une fois que tu as tout configuré, tu peux lancer ton bot avec cette commande :
+1. Une fois que tu as tout configuré, tu peux lancer ton bot ~~violemment contre un mur~~ avec cette commande :
     ```bash
     python3 main.py
     ```
-2. Pour l’exécuter en arrière-plan :
+2. Pour l’exécuter en ~~le forçant à traverser une autoroute en trottinette sans freins~~ arrière-plan, tu peux utiliser cette commande :
     ```bash
     nohup python3 main.py &
     ```
@@ -98,36 +98,6 @@ Si le bot joue les troubles-fêtes, voici quelques vérifications :
 4. **Regarde les logs**
    - Si le bot plante, regarde les erreurs affichées dans le terminal pour avoir un indice.
 
-## 📈 Compatibilité
-
-Ce bot fonctionne avec `discord.py` et est compatible avec les versions de Python 3.8+.
-
-## 🌟 Contribuer
-
-Les contributions sont les bienvenues ! Si tu veux faire une modif’ :
-1. Fork le dépôt.
-2. Crée une branche pour ta feature :
-    ```bash
-    git checkout -b feature/nom-de-la-fonctionnalite
-    ```
-3. Fais tes changements, puis commit :
-    ```bash
-    git commit -m "Ajout d'une nouvelle fonctionnalité"
-    ```
-4. Pousse ta branche :
-    ```bash
-    git push origin feature/nom-de-la-fonctionnalite
-    ```
-5. Ouvre une Pull Request.
-
 ## 📜 Licence
 
 Ce projet est sous licence Apache 2.0. Consulte le fichier [LICENSE](LICENSE) pour plus d'infos.
-
-## 🆘 Support
-
-Si t’as un souci ou une question, ouvre une [issue](https://github.com/PiiTux/Bot_Discord.py_ping_vocal/issues).
-
-## 🙏 Remerciements
-
-Merci d’utiliser ce bot ! Si t’es fan, n’oublie pas de laisser une étoile ⭐ sur le dépôt GitHub.
