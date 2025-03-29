@@ -76,8 +76,8 @@ Si le bot joue les troubles-fêtes, voici quelques vérifications :
    - Assure-toi qu’il n’a pas été révoqué via le [portail des développeurs Discord](https://discord.com/developers/applications).
 
 2. **Le salon textuel est-il bien défini ?**
-   - Dans `main.py`, vérifie l’ID du salon :
-     ```python
+   - Dans `settings.ini`, vérifie l’ID du salon :
+     ```ini
      CHANNEL = 0000000000000000000
      ```
    - Le bot doit avoir la permission d’envoyer des messages dans ce salon.
