@@ -1,15 +1,26 @@
 # Importation des modules nécessaires
+from shutil import copy
 from os import getenv, path
 from dotenv import load_dotenv
 from configparser import ConfigParser
 from discord import AllowedMentions, Client, Intents
 
+# Vérification que le fichier "settings.ini" existe
+if not path.exists("settings.ini"):
+    # Vérifier si "settings.example.ini" existe
+    if not path.exists("settings.example.ini"):
+        # Lever une exception si "settings.example.ini" est introuvable
+        raise FileNotFoundError("Les fichiers \"settings.ini\" et \"settings.example.ini\" sont introuvables.")
+
+    # Copie du fichier "settings.example.ini" vers "settings.ini"
+    copy("settings.example.ini", "settings.ini")
+
 # Chargement du fichier de configuration
 config = ConfigParser()
 config.read("settings.ini")
-CHANNEL = config["SETTINGS"].getint("CHANNEL")
-IGNORED_CHANNELS = tuple(map(int, config["SETTINGS"]["IGNORED_CHANNELS"].split(",")))
-ROLE = config["SETTINGS"].getint("ROLE")
+CHANNEL = config["SETTINGS"].getint("CHANNEL") if "CHANNEL" in config["SETTINGS"] else 0
+IGNORED_CHANNELS = tuple(map(int, config["SETTINGS"]["IGNORED_CHANNELS"].split(","))) if "IGNORED_CHANNELS" in config["SETTINGS"] else (0,)
+ROLE = config["SETTINGS"].getint("ROLE") if "ROLE" in config["SETTINGS"] else 0
 
 # Si le fichier .env existe
 if path.exists(".env"):
@@ -17,10 +28,10 @@ if path.exists(".env"):
     load_dotenv()
 
 # Récupération du jeton d’accès Discord à partir des variables d’environnement
-TOKEN = getenv("DISCORD_TOKEN")
+DISCORD_TOKEN = getenv("DISCORD_TOKEN")
 
-if not TOKEN:
-    raise RuntimeError("Aucun jeton d’accès Discord trouvé dans le fichier .env ou dans les variables d’environnement")
+if not DISCORD_TOKEN:
+    raise ValueError("Aucun jeton d’accès Discord trouvé dans le fichier .env ou dans les variables d’environnement")
 
 # Création des intents pour le client Discord
 intents = Intents.default()
@@ -81,4 +92,4 @@ async def on_voice_state_update(member, before, after):
                 await channel.send(f"🎙️ <@{member.id}> s’est connecté dans le salon <#{after.channel.id}>.|| *Ping {mention}*||", allowed_mentions=AllowedMentions(users=False))
 
 # Démarrage du client Discord avec le jeton d’accès
-client.run(TOKEN)
+client.run(DISCORD_TOKEN)
