@@ -18,9 +18,9 @@ if not path.exists("settings.ini"):
 # Chargement du fichier de configuration
 config = ConfigParser()
 config.read("settings.ini")
-CHANNEL = config["SETTINGS"].getint("CHANNEL") if "CHANNEL" in config["SETTINGS"] else 0
+CHANNEL = config["SETTINGS"].getint("CHANNEL", 0)
 IGNORED_CHANNELS = tuple(map(int, config["SETTINGS"]["IGNORED_CHANNELS"].split(","))) if "IGNORED_CHANNELS" in config["SETTINGS"] else (0,)
-ROLE = config["SETTINGS"].getint("ROLE") if "ROLE" in config["SETTINGS"] else 0
+ROLE = config["SETTINGS"].getint("ROLE", 0)
 
 # Si le fichier .env existe
 if path.exists(".env"):
