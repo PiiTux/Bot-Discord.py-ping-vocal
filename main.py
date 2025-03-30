@@ -92,4 +92,4 @@ async def on_voice_state_update(member, before, after):
                 await channel.send(f"🎙️ <@{member.id}> s’est connecté dans le salon <#{after.channel.id}>.|| *Ping {mention}*||", allowed_mentions=AllowedMentions(users=False))
 
 # Démarrage du client Discord avec le jeton d’accès
-client.run(DISCORD_TOKEN)
+client.run(DISCORD_TOKEN, log_handler=None)
